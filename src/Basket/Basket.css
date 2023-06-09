@@ -1,0 +1,74 @@
+.colorItem{
+    height: 60px;
+    width: 60px;
+    background: black;
+    border-radius: 16px;
+    /*border: 4px red;*/
+    /*border: 4px solid #e34761;*/
+}
+.mapTitle {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    /* font-size: 12px; */
+    font-size: 26px;
+    color: #282c34;
+    /* width: 190px; */
+    width: 277px;
+}
+.mapPrice{
+    color: #2C3C48;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+
+}
+.container {
+    max-width: 1120px;
+    margin: 0 auto;
+    /* border: 2px solid; */
+}
+.pises{
+    display: flex;
+    padding-bottom: 30px;
+    justify-content: space-between;
+    /*justify-content: space-between;*/
+    align-items: flex-start;
+}
+.prisesType{
+    padding-top: 20px;
+}
+.re{
+    display: flex;
+    align-items:  flex-start;
+    flex-direction: column;
+
+
+}
+.re{
+    padding-left: 20px;
+}
+.re span{
+    padding-right: 10px;
+}
+
+.counterButton{
+    color: #ffffff;
+    background: #f486be;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+.counter-wrap{
+    display: flex;
+    align-items: center;
+}
+.counter-display{
+    padding: 7.5px 14px;
+    border-top: 1px solid  #f486be ;
+    border-bottom: 1px solid  #f486be ;
+}
+.counter_inner{
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
