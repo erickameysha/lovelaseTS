@@ -13,15 +13,15 @@ const Header = () => {
 
                             <div className={s.items}>
 
-                            {/*    <Link className={s.item} to={'/aboutUS'}>*/}
+                                <Link className={s.item} to={'/aboutUS'}>
                                     ABOUT US
-                            {/*    </Link>*/}
-                            {/*    <Link className={s.item} to={'/'}>*/}
+                                </Link>
+                                <Link className={s.item} to={'/'}>
                                     MAIN
-                            {/*    </Link>*/}
-                            {/*    <Link className={s.item} to={'/catalog'}>*/}
+                                </Link>
+                                <Link className={s.item} to={'/catalog'}>
                                     CATALOG
-                            {/*    </Link>*/}
+                                </Link>
                             </div>
 
                             <span className={s.logo}>

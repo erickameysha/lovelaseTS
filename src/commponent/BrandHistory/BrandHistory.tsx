@@ -1,7 +1,7 @@
 import React from 'react';
 // import StoryBaba from "../../images/brandStory/women.png"
-import StoryBaba from "./../images/brandStory/women.png"
-import StoryBaba2 from "./../images/brandStory/women2.png"
+import StoryBaba from "../../images/brandStory/women.png"
+import StoryBaba2 from "../../images/brandStory/women2.png"
 
 import './brandHistory.css'
 

@@ -1,18 +1,19 @@
 import React, {useContext, useEffect, useState} from 'react';
 
-import {catalogData} from "../Catalog/CatalogFakeData";
+import {catalogData} from "../../Catalog/CatalogFakeData";
 import './Item.css'
-import {Link, useParams} from "react-router-dom";
-import {CardContext} from "../../Сontext/CardContext";
+import { useParams} from "react-router-dom";
+// import {CardContext} from "../../Сontext/CardContext";
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import {ToggleButton} from "@mui/material";
+// import basket from "../Basket/Basket";
 
 const Item = () => {
     const params = useParams()
-    const {getBasketItem, basket,getItem} = useContext(CardContext)
+    // const {getBasketItem, basket,getItem} = useContext(CardContext)
     useEffect(() => {
-        if (params.coinID)
-            getBasketItem(params.coinID)
+        // if (params.coinID)
+            // getBasketItem(params.coinID)
     }, [])
     const [alignment, setAlignment] = React.useState('80E');
 
@@ -25,15 +26,15 @@ const Item = () => {
     return (
         <div className={'containerMap'}>
 
-            <div className={'item-images'} key={basket.id}>
-                <img src={basket.img}/>
-            </div>
-            <div className={'getterIMG'}>
+            {/*<div className={'item-images'} key={basket.id}>*/}
+            {/*    <img src={basket.img}/>*/}
+            {/*</div>*/}
+            {/*<div className={'getterIMG'}>*/}
 
-                <h1 className={'mapTitle'}><span>{basket.title}</span>
-                    <span>{basket.color}</span>
-                </h1>
-                <p className={'mapPrice'}>{basket.price}</p>
+            {/*    <h1 className={'mapTitle'}><span>{basket.title}</span>*/}
+            {/*        <span>{basket.color}</span>*/}
+            {/*    </h1>*/}
+            {/*    <p className={'mapPrice'}>{basket.price}</p>*/}
                 <div>
                     <button className={'colorItem'}>
 
@@ -64,7 +65,7 @@ const Item = () => {
 
 
             </div>
-        </div>
+        // </div>
     );
 };
 

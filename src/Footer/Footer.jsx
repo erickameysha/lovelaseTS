@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import instagram from './FooterIcon/instagram.png'
 import faceBook from './FooterIcon/facebook.png'
 import './footer.css'
-import s from "./../Header/Header.module.css";
+import s from "../commponent/Header/Header.module.css";
 
 const Footer = () => {
     return (

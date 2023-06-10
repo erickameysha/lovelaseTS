@@ -3,7 +3,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import './Basket.css'
 import {useParams} from "react-router-dom";
 // import {CardContext} from "../../Сontext/CardContext";
-import {catalogData} from "../Catalog/CatalogFakeData";
+import {catalogData} from "../../Catalog/CatalogFakeData";
 
 const Basket = (
     // {props}
