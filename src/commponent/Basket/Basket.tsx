@@ -4,10 +4,15 @@ import './Basket.css'
 import {useParams} from "react-router-dom";
 // import {CardContext} from "../../Сontext/CardContext";
 import {catalogData} from "../../Catalog/CatalogFakeData";
+import {BasketType} from "../../App";
+import BasketItem from "./BasketItem";
 
-const Basket = (
-    // {props}
-) => {
+type PropsType ={
+    basket: BasketType[]
+}
+
+const Basket = (props: PropsType) => {
+    const [totalPrice, setTotalPrice] = useState<number>(0); //
     const params = useParams()
     // const {getBasketItem, basket} = useContext(CardContext)
     const [item, setItem] = useState(catalogData[0])
@@ -19,8 +24,20 @@ const Basket = (
             // getBasketItem(params.coinID)
     }, [])
 
+    function sumPrices(arr:BasketType[]) {
+        let total = 0;
 
-    return (
+        for (let i = 0; i < arr.length; i++) {
+            total += Number(arr[i].price);
+        }
+        console.log(total)
+        return total;
+    }
+
+    const handleTotalPriceChange = (price: number) => {
+        setTotalPrice(totalPrice + price);
+    }
+        return (
         <div>
             <div className={'container'}>
                 <div style={{
@@ -29,6 +46,7 @@ const Basket = (
                     justifyContent: 'space-between',
                     marginBottom: '20px'
                 }}>
+                    <button onClick={()=> sumPrices(props.basket)}></button>
                     <div>
                         <p>ТОВАРЫ</p>
                     </div>
@@ -41,46 +59,14 @@ const Basket = (
                         <p>CУММА</p>
                     </div>
                 </div>
-
-                <div className={'pises'}>
-                    <div className={'item-inner'}>
-                        <div className="item-img">
-                            <img src={item.img} alt=""/>
-                        </div>
-                        <div className={'re'}>
-                            <h3 className={'mapTitle'}><span>{item.title}</span>
-                            </h3>
-                            {/*<p className={'mapPrice'}>{item.price}</p>*/}
-
-                            <div style={{
-                                display: 'flex',
-                            alignItems: 'center'
-                            }}>    <p>color: </p>
-                                <div style={{
-                                    marginLeft: '10px',
-                                    width:'20px',
-                                    height:'20px',
-                                    background: 'pink'
-                                }} ></div> </div>
-
-                        </div>
-
-                    </div>
-                    <div className="counter_inner">
-
-
-
-
-                        <div className={'prisesType'}>
-                            {price} BYN
-                        </div>
-                    </div>
-
-                </div>
-
+                {
+                    props.basket.map(el=> <BasketItem key ={el.id}handleTotalPriceChange ={handleTotalPriceChange} basket={el} data={props.basket}/>)
+                }
+            </div>
+            <div className="">
+                <div>Общая сумма: {totalPrice} руб.</div> // Отображаем общую сумму
             </div>
         </div>
     );
-};
-
-export default Basket;
+}
+export default Basket

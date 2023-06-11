@@ -1,16 +1,25 @@
 import React from 'react';
+import {BasketType} from "../../App";
+import {Counter} from "./Counter";
 
-const BasketItem = (props: any) => {
+type PropsType ={
+    basket: BasketType
+    data: BasketType[]
+    handleTotalPriceChange: (price: number) =>void
+}
+
+const BasketItem = (props: PropsType) => {
+    const basket = props.basket
     return (
         <div className={'pises'}>
             <div className={'item-inner'}>
                 <div className="item-img">
-                    <img src={props.item.img} alt=""/>
+                    <img src={basket.img} alt=""/>
                 </div>
                 <div className={'re'}>
-                    <h3 className={'mapTitle'}><span>{props.item.title}</span>
+                    <h3 className={'mapTitle'}><span>{basket.title}</span>
                     </h3>
-                    {/*<p className={'mapPrice'}>{item.price}</p>*/}
+                    {/*<p className={'mapPrice'}>{basket.price}</p>*/}
 
                     <div style={{
                         display: 'flex',
@@ -20,7 +29,7 @@ const BasketItem = (props: any) => {
                             marginLeft: '10px',
                             width:'20px',
                             height:'20px',
-                            background: 'pink'
+                            background: `${basket.color}`
                         }} ></div> </div>
 
                 </div>
@@ -28,15 +37,10 @@ const BasketItem = (props: any) => {
             </div>
             <div className="counter_inner">
 
-                {/*<div className={'counter-wrap'}>*/}
-                {/*    <button className={'counterButton'} onClick={()=> decrementCount()}>-</button>*/}
-                {/*    <p className={'counter-display'}>{props.counter}</p>*/}
-                {/*    <button className={'counterButton'} onClick={()=>incrementCount()} >+</button>*/}
-                {/*</div>*/} 
-
+                <Counter id={basket.id} onTotalPriceChange={props.handleTotalPriceChange} price={ basket.price} basket={props.data} />
 
                 <div className={'prisesType'}>
-                    {props.price} BYN
+                    {basket.price} BYN
                 </div>
             </div>
 

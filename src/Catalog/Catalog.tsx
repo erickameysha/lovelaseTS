@@ -1,30 +1,23 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './Catalog.css'
 import CatalogIMG from './CatalogImages/colection.png'
 import {CatalogItem} from "./CatalogsItem/CatalogItem";
-
 import {Link} from "react-router-dom";
-// import {CardContext} from "../../Сontext/CardContext";
-// import {useDispatch, useSelector} from "react-redux";
-// import {reducerSlice, setCatalogAC, setCatalogTC, someAction} from "../../store/catalog-reducer";
-import {catalogData} from "./CatalogFakeData";
+import {catalogData, CatalogDataType} from "./CatalogFakeData";
 
+type PropsType ={
+    catalog: CatalogDataType[]
+    getBasketItem: (id: string)=> void
+}
 
-const Catalog = () => {
-
-    // const count = useSelector((state)=> state.catalog)
-    let [catalogItem, setCatalog] = useState(catalogData)
-
-    // const dispatch = useDispatch()
+const Catalog = (props:PropsType) => {
+    let [catalogItem, setCatalog] = useState(props.catalog)
     let [filter, setFilter] = useState('All')
 
     useEffect(()=> {
-        debugger
-        // dispatch(setCatalogAC(setCatalogTC))
-        // setCatalog(catalog)
+
     },[])
-// console.log(catalog,getBasketItem,setTest)
-    // const test = catalogData
+
     const filterProperty = (array:any, filter:any) => {
         console.log(array,filter)
         if (filter === 'All') return array
@@ -32,8 +25,7 @@ const Catalog = () => {
         return array.filter((el:any) => el.filter === filter)
     }
     let hookCatalogItem = (id:any) => {
-        let hook = catalogItem.filter((el:any) => el.id === id)
-        return hook
+        return catalogItem.filter((el:any) => el.id === id)
     }
 
     let dataType = filterProperty(catalogData, filter)
@@ -71,11 +63,11 @@ const Catalog = () => {
 
                                 return (
                                     <Link
-                                        // onClick={()=>{getBasketItem(el.id)}}
+                                        onClick={()=>{props.getBasketItem(el.id)}}
                                         className={'catalog-link'} to={`/item/${el.id}`}>
                                         <CatalogItem
-                                            img={el.img}
                                             key={el.id}
+                                            img={el.img}
                                             id={el.id}
                                             title={el.title}
                                             color={el.color}

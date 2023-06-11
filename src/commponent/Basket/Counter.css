@@ -1,0 +1,22 @@
+.counterButton{
+    color: #ffffff;
+    background: #f486be;
+    width: 40px;
+    height: 40px;
+    border: none;
+}
+.counter-wrap{
+    display: flex;
+    align-items: center;
+}
+.counter-display{
+    padding: 7.5px 14px;
+    border-top: 1px solid  #f486be ;
+    border-bottom: 1px solid  #f486be ;
+}
+.counter_inner{
+    min-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
