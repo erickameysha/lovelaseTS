@@ -1,11 +1,23 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Select, TextInput} from "@mantine/core";
+import {useDispatch} from "react-redux";
+import {addItem} from "../../state/catalog-reducer";
 
 const AdminPanel = () => {
-    const [searchValue, onSearchChange] = useState('');
+    const dispatch = useDispatch()
+    const [searchValue, onSearchChange] = useState("All");
     const [link, setLink] = useState('')
-    const [color, setColor] = useState('')
-    const [price, setPrice] = useState('')
+    const [title, setTitle] = useState('')
+    const [price, setPrice] = useState<number>(0)
+
+    useEffect(()=> {
+        console.log(searchValue)
+        console.log(link)
+    },[searchValue, link])
+
+    const onClickHandler = () => {
+      dispatch(addItem(searchValue, link,price, title))
+    }
 
     return (
         <div>
@@ -35,15 +47,16 @@ const AdminPanel = () => {
                     />
                     <TextInput
                         placeholder={'Цвет'}
-                        onChange={(event) => setColor(event.currentTarget.value)}
+                        onChange={(event) => setTitle(event.currentTarget.value)}
 
                     />
                     <TextInput
                         placeholder={'Цена'}
-                        onChange={(event) => setPrice(event.currentTarget.value)}
+                        onChange={(event) => setPrice(+event.currentTarget.value)}
 
                     />
                 </div>
+                <button onClick={onClickHandler}> +</button>
             </div>
 
         </div>

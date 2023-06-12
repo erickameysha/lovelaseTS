@@ -1,13 +1,17 @@
-import React  from 'react';
+import React, {useEffect} from 'react';
 import { useForm} from "@mantine/form";
 
 import {Box, Button} from "@mui/material";
 import {Group, PasswordInput, TextInput} from "@mantine/core";
+import {useDispatch, useSelector} from "react-redux";
+import {AuthType, regAC} from "../../state/auth-reducer";
+import {AppRootStateType} from "../../state/store";
 
 
-//@ts-ignore
+
 const Form = () => {
-
+    const auth= useSelector<AppRootStateType, AuthType[]>(state => state.auth)
+const dispatch= useDispatch()
     const form = useForm({
         validate: {
             email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
@@ -24,9 +28,13 @@ const Form = () => {
 
         },
     });
+    useEffect(()=> {
+        console.log(auth)
+    },[auth])
+
     return (
         <Box>
-            <form onSubmit={form.onSubmit(values => console.log(values))}>
+            <form onSubmit={form.onSubmit(values => dispatch(regAC(values.name, values.lastName,values.email, values.password, values.phone)))}>
                 <TextInput
                     withAsterisk
                     label="name"

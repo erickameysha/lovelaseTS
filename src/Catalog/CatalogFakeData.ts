@@ -4,10 +4,10 @@ export  type CatalogDataType = {
     title: string
 
     price: number
-    filter: FilterType
+    filter: string
 }
 
-type FilterType = 'Underwear' | 'BodyJewelry' | 'clothing' | 'Swimwear'| 'All'
+export type FilterType = 'Underwear' | 'BodyJewelry' | 'clothing' | 'Swimwear'| 'All'
 
 export let catalogData: CatalogDataType[] = [
 

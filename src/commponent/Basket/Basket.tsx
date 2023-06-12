@@ -1,28 +1,18 @@
-import React, {useContext, useEffect, useState} from 'react';
-// import {fakeDate} from "../Item/Item";
+import React, { useState} from 'react';
 import './Basket.css'
-import {useParams} from "react-router-dom";
-// import {CardContext} from "../../Сontext/CardContext";
-import {catalogData} from "../../Catalog/CatalogFakeData";
+
 import {BasketType} from "../../App";
 import BasketItem from "./BasketItem";
+import {useSelector} from "react-redux";
+import {AppRootStateType} from "../../state/store";
 
 type PropsType ={
     basket: BasketType[]
 }
 
 const Basket = (props: PropsType) => {
-    const [totalPrice, setTotalPrice] = useState<number>(0); //
-    const params = useParams()
-    // const {getBasketItem, basket} = useContext(CardContext)
-    const [item, setItem] = useState(catalogData[0])
-   const [price, setPrice] = useState(item.price)
-   const [counter, setCounter] = useState(1)
-
-    useEffect(() => {
-        // if (params.coinID)
-            // getBasketItem(params.coinID)
-    }, [])
+    const [totalPrice, setTotalPrice] = useState<number>(0);
+    const basket = useSelector<AppRootStateType, BasketType[]>(state => state.basket)
 
     function sumPrices(arr:BasketType[]) {
         let total = 0;
@@ -60,11 +50,11 @@ const Basket = (props: PropsType) => {
                     </div>
                 </div>
                 {
-                    props.basket.map(el=> <BasketItem key ={el.id}handleTotalPriceChange ={handleTotalPriceChange} basket={el} data={props.basket}/>)
+                    basket.map(el=> <BasketItem key ={el.id} handleTotalPriceChange ={handleTotalPriceChange} basket={el} data={props.basket}/>)
                 }
             </div>
             <div className="">
-                <div>Общая сумма: {totalPrice} руб.</div> // Отображаем общую сумму
+                <div>Общая сумма: {totalPrice} руб.</div>
             </div>
         </div>
     );

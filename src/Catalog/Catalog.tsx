@@ -1,42 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './Catalog.css'
 import CatalogIMG from './CatalogImages/colection.png'
 import {CatalogItem} from "./CatalogsItem/CatalogItem";
 import {Link} from "react-router-dom";
-import {catalogData, CatalogDataType} from "./CatalogFakeData";
+import { CatalogDataType} from "./CatalogFakeData";
+import {useDispatch} from "react-redux";
+import {getItemAC} from "../state/catalog-reducer";
 
-type PropsType ={
+type PropsType = {
     catalog: CatalogDataType[]
-    getBasketItem: (id: string)=> void
+    getBasketItem: (id: string) => void
 }
 
-const Catalog = (props:PropsType) => {
+const Catalog = (props: PropsType) => {
+    const dispatch = useDispatch()
     let [catalogItem, setCatalog] = useState(props.catalog)
     let [filter, setFilter] = useState('All')
 
-    useEffect(()=> {
-
-    },[])
-
-    const filterProperty = (array:any, filter:any) => {
-        console.log(array,filter)
+    const filterProperty = (array: any, filter: any) => {
+        console.log(array, filter)
         if (filter === 'All') return array
 
-        return array.filter((el:any) => el.filter === filter)
+        return array.filter((el: any) => el.filter === filter)
     }
-    let hookCatalogItem = (id:any) => {
-        return catalogItem.filter((el:any) => el.id === id)
+    let hookCatalogItem = (id: any) => {
+        dispatch(getItemAC(id))
     }
 
-    let dataType = filterProperty(catalogData, filter)
-    console.log(dataType)
+    let dataType = filterProperty(catalogItem, filter)
 
     return (
         <div className={'container'}>
 
             <div className='catalog-marge'>
 
-                    <img className={'catalog-img'} src={CatalogIMG} alt=""/>
+                <img className={'catalog-img'} src={CatalogIMG} alt=""/>
 
                 <div className="containere">
 
@@ -55,16 +53,14 @@ const Catalog = (props:PropsType) => {
                     </div>
 
 
-
                     <div className="catalog-items">
                         {
 
                             dataType.map((el: any) => {
-
                                 return (
-                                    <Link
-                                        onClick={()=>{props.getBasketItem(el.id)}}
-                                        className={'catalog-link'} to={`/item/${el.id}`}>
+                                    <Link key={el.id} id="RouterNavLink" className={'catalog-link'} onClick={() => {
+                                        props.getBasketItem(el.id)
+                                    }} to={`/item/${el.id}`}>
                                         <CatalogItem
                                             key={el.id}
                                             img={el.img}
@@ -76,7 +72,6 @@ const Catalog = (props:PropsType) => {
                                             hookCatalogItem={hookCatalogItem}
                                         />
                                     </Link>
-
                                 )
                             })
                         }
