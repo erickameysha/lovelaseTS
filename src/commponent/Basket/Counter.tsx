@@ -8,17 +8,17 @@ type CounterProps = {
     price: number
     basket: BasketType[]
     id: string;
-    onTotalPriceChange: (price: number) => void; // Определяем новый пропс для передачи функции обновления общей стоимости
+    // onTotalPriceChange: (price: number) => void; // Определяем новый пропс для передачи функции обновления общей стоимости
 };
 
-export const Counter = ({ price,basket,id, onTotalPriceChange }: CounterProps) => {
+export const Counter = ({ price,basket,id}: CounterProps) => {
     const [count, setCount] = useState<number>(0);
 
     const handleIncrease = (): void => {
         setCount(count + 1);
         const item: BasketType| undefined =basket.find((item) => item.id === id);
         if (item) {
-            onTotalPriceChange(item.price); // Вызываем функцию обновления общей стоимости и передаем стоимость одного товара
+            // onTotalPriceChange(item.price); // Вызываем функцию обновления общей стоимости и передаем стоимость одного товара
         }
     };
 
@@ -27,7 +27,7 @@ export const Counter = ({ price,basket,id, onTotalPriceChange }: CounterProps) =
             setCount(count - 1);
             const item: BasketType | undefined = basket.find((item) => item.id === id);
             if (item) {
-                onTotalPriceChange(-item.price); // Вызываем функцию обновления общей стоимости и передаем отрицательную стоимость одного товара
+                // onTotalPriceChange(-item.price); // Вызываем функцию обновления общей стоимости и передаем отрицательную стоимость одного товара
             }
         }
     };

@@ -1,4 +1,4 @@
-import {CatalogDataType} from "../Catalog/CatalogFakeData";
+
 
 let initState: any
 const itemReducer = (state =initState, action:ActionType) => {
