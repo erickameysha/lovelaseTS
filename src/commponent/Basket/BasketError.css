@@ -1,0 +1,16 @@
+.card {
+    position: relative;
+}
+
+.error-bg {
+    position: absolute;
+    z-index: -1;
+    left: 57px;
+}
+.cart__text {
+    margin-left: 262px;
+    margin-top: 39px;
+    padding-top: 56px;
+    margin-bottom: 278px;
+    width: 645px;
+}

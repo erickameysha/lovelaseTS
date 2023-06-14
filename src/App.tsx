@@ -17,6 +17,8 @@ import {CatalogDataType} from "./Catalog/CatalogFakeData";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./state/store";
 import {getItemAC} from "./state/catalog-reducer";
+import BasketContainer from "./commponent/Basket/BasketContainer";
+import CheckOut from "./commponent/СheckOut/CheckOut";
 
 
 export interface BasketType extends CatalogDataType {
@@ -65,7 +67,8 @@ function App() {
                 />}/>
                 <Route path={'/registration'} element={<RegistrationPage/>}/>
                 <Route path={'/login'} element={<LoginPage/>}/>
-                <Route path={'/catalogItem'} element={<Basket basket={basket}/>}/>
+                <Route path={'/catalogItem'} element={<BasketContainer/>}/>
+                <Route path={'/check-out'} element={<CheckOut/>}/>
                 <Route path={'/item/:cardID'} element={<Item
                     // item={item}
                     getBasketItem={getItem}

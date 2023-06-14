@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {BasketType} from "../../App";
 import {Counter} from "./Counter";
 import {useDispatch} from "react-redux";
 import {deleteCard} from "../../state/basket-reducer";
+import basket from "./Basket";
 
 type PropsType = {
     basket: BasketType
@@ -13,6 +14,7 @@ type PropsType = {
 const BasketItem = (props: PropsType) => {
     const basket = props.basket
     const dispatch = useDispatch()
+
     return (
         <div className={'pises'}>
             <div className={'item-inner'}>
@@ -20,7 +22,7 @@ const BasketItem = (props: PropsType) => {
                     <img src={basket.img} alt=""/>
                 </div>
                 <div className={'re'}>
-                    <h3 className={'mapTitle'}><span>{basket.title}</span>
+                    <h3  className={'mapTitle'}><span>{basket.title}</span>
                     </h3>
                     {/*<p className={'mapPrice'}>{basket.price}</p>*/}
 
@@ -45,10 +47,11 @@ const BasketItem = (props: PropsType) => {
             <div className="counter_inner">
 
                 <Counter id={basket.id}
-                    // onTotalPriceChange={props.handleTotalPriceChange}
-                         price={basket.price} basket={props.data}/>
 
-                <button onClick={event => dispatch(deleteCard(basket.id))}>удалить </button>
+                    // onTotalPriceChange={props.handleTotalPriceChange}
+                         price={basket.price} basket={props.basket}/>
+
+                <button onClick={() => dispatch(deleteCard(basket.id))}>удалить </button>
 
                 <div className={'prisesType'}>
                     {basket.price} BYN

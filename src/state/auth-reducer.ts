@@ -1,7 +1,10 @@
 import {BasketType} from "../App";
 import uuid from "react-uuid";
 
-export type AuthType = {
+
+export type PersonData = {
+
+
     id: string
     name: string
     lastName: string,
@@ -10,30 +13,32 @@ export type AuthType = {
     phone: string
     isAuth: boolean
     isAdmin: boolean
-    card: BasketType[]
+}
+export type AuthType = {
+
+  person: PersonData[]
+    card: BasketType[]|null
 
 }
 
-const initState: AuthType[] = []
+const initState: AuthType = {
+    person:[],
+    card: null
+}
 
 
-export const authReducer = (state = initState, action: ActionType): AuthType[] => {
+export const authReducer = (state = initState, action: ActionType): AuthType => {
     switch (action.type) {
-        case "REG": {
-            return [{
-                id: uuid(), name: action.name,
-                lastName: action.lastName,
-                email: action.email,
-                password: action.password,
-                phone: action.phone, isAuth: true, isAdmin: false, card: []
-            }, ...state]
-        }
-        case "LOG": {
-            return state
+        case "REG":{
 
+            return {...state, person:[...state['person'],{id: uuid(), name: action.name,
+                         lastName: action.lastName,
+                       email: action.email,
+                       password: action.password,
+                        phone: action.phone, isAuth: true, isAdmin: false}] ?? null}
         }
-        default:
-            return state
+
+        default: return state ?? null
     }
 }
 

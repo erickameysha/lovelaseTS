@@ -3,40 +3,31 @@ import Item from "../Item/Item";
 import './Counter.css'
 import {BasketType} from "../../App";
 import basket from "./Basket";
+import {useDispatch} from "react-redux";
+import {dicrementCard, inrementCard} from "../../state/basket-reducer";
 
 type CounterProps = {
     price: number
-    basket: BasketType[]
+    basket: BasketType
     id: string;
     // onTotalPriceChange: (price: number) => void; // Определяем новый пропс для передачи функции обновления общей стоимости
 };
 
 export const Counter = ({ price,basket,id}: CounterProps) => {
-    const [count, setCount] = useState<number>(0);
+    const [count, setCount] = useState<number>(basket.count);
 
+const dispatch = useDispatch()
     const handleIncrease = (): void => {
         setCount(count + 1);
-        const item: BasketType| undefined =basket.find((item) => item.id === id);
-        if (item) {
-            // onTotalPriceChange(item.price); // Вызываем функцию обновления общей стоимости и передаем стоимость одного товара
-        }
+        dispatch(inrementCard(id))
     };
 
     const handleDecrease = (): void => {
         if (count > 0) {
             setCount(count - 1);
-            const item: BasketType | undefined = basket.find((item) => item.id === id);
-            if (item) {
-                // onTotalPriceChange(-item.price); // Вызываем функцию обновления общей стоимости и передаем отрицательную стоимость одного товара
-            }
+            dispatch(dicrementCard(id))
         }
     };
-
-    const item: BasketType | undefined = basket.find((item) => item.id === id);
-
-    if (!item) {
-        return null;
-    }
 
     return (
         <div className="counter_inner">

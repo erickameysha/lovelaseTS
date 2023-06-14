@@ -6,29 +6,31 @@ import BasketItem from "./BasketItem";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../state/store";
 import {setTotalPriceAC} from "../../state/basket-reducer";
+import BasketError from "./BasketError";
+import {Link} from "react-router-dom";
 
-type PropsType ={
-    basket: BasketType[]
-}
 
-const Basket = (props: PropsType) => {
+
+const Basket = () => {
     // const [totalPrice, setTotalPrice] = useState<number>(0);
     const basket = useSelector<AppRootStateType, BasketType[]>(state => state.basket['basketItem'])
-    const totalPriceAC  = useSelector<AppRootStateType, number>(state => state.basket['totalPrice'])
-    const dispatch =useDispatch()
+    const totalPriceAC = useSelector<AppRootStateType, number>(state => state.basket['totalPrice'])
+    const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(setTotalPriceAC())
-    }, [totalPriceAC])
+        console.log(basket)
+    }, [totalPriceAC,basket])
 
-    if (basket === null){
+    if (basket === null) {
         return null
     }
 
-        return (
+    return (
         <div>
 
             <div className={'container'}>
+
                 <div style={{
                     display: 'flex',
                     borderBottom: '3px solid pink',
@@ -40,7 +42,7 @@ const Basket = (props: PropsType) => {
                         <p>ТОВАРЫ</p>
                     </div>
                     <div style={{
-                        minWidth:  "300px",
+                        minWidth: "300px",
                         display: 'flex',
                         justifyContent: 'space-between'
                     }}>
@@ -49,13 +51,18 @@ const Basket = (props: PropsType) => {
                     </div>
                 </div>
                 {
-                    basket.map(el=> <BasketItem key ={el.id} basket={el} data={props.basket}/>)
+                    basket.map(el => <BasketItem key={el.id} basket={el} data={basket}/>)
                 }
             </div>
             <div className="">
-                <div>Общая сумма: {totalPriceAC} руб.</div>
+                <div>Общая сумма: {totalPriceAC} BYN.</div>
+                <Link to={'/check-out'}>
+ jajhvbnm
+                </Link>
             </div>
         </div>
+
+
     );
 }
 export default Basket
