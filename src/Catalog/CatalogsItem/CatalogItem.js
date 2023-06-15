@@ -1,5 +1,4 @@
 import React from 'react';
-import test from './images/test.png'
 import './CatalogItem.css'
 import {Link} from "react-router-dom";
 import Card from '@mui/material/Card';
@@ -21,7 +20,6 @@ export const CatalogItem = (props) => {
       <Card className='Card-item' sx={{ maxWidth: 440 }}>
         <div className={'item'}>
           <Link >
-            {/* <div className="catalog-images"> */}
             <CardMedia
             component="img"
             height="194"
@@ -44,7 +42,7 @@ export const CatalogItem = (props) => {
         {props.color}
         </Typography>
         <Typography variant="p" color="text.secondary">
-        {props.price}
+        {props.price} BYN
         </Typography>
       </CardContent>
         </div>

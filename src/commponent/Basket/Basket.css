@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto&display=swap');
+
+.title{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 300;
+
+
+}
 .colorItem{
     height: 60px;
     width: 60px;
@@ -69,6 +78,7 @@
 .counter_inner{
     min-width: 300px;
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
+    align-items: flex-start
 }

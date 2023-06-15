@@ -24,13 +24,12 @@ const Login = () => {
             <form onSubmit={form.onSubmit(values => console.log(values))}>
                 <TextInput
                     withAsterisk
-                    label="Email"
                     placeholder="example@mail.com"
                     {...form.getInputProps('email')}
                 />
 
                 <PasswordInput
-                    label={'Password'}
+
                     placeholder={'Пароль'}
                     {...form.getInputProps('password')}
                 />

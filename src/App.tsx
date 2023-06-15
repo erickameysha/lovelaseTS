@@ -11,7 +11,6 @@ import {Route, Routes} from "react-router-dom";
 import PersonalArea from "./PersonalArea/PersonalArea";
 import RegistrationPage from "./commponent/Registration/RegistrationPage";
 import LoginPage from "./commponent/Registration/LoginPage";
-import Basket from "./commponent/Basket/Basket";
 import Item from "./commponent/Item/Item";
 import {CatalogDataType} from "./Catalog/CatalogFakeData";
 import {useDispatch, useSelector} from "react-redux";
@@ -67,7 +66,7 @@ function App() {
                 />}/>
                 <Route path={'/registration'} element={<RegistrationPage/>}/>
                 <Route path={'/login'} element={<LoginPage/>}/>
-                <Route path={'/catalogItem'} element={<BasketContainer/>}/>
+                <Route path={'/card'} element={<BasketContainer/>}/>
                 <Route path={'/check-out'} element={<CheckOut/>}/>
                 <Route path={'/item/:cardID'} element={<Item
                     // item={item}

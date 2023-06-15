@@ -10,10 +10,8 @@ import {AppRootStateType} from "../../state/store";
 import {CatalogDataType} from "../../Catalog/CatalogFakeData";
 import {getItemAC,} from "../../state/catalog-reducer";
 import {addItemAC} from "../../state/basket-reducer";
-import {Counter} from "../Basket/Counter";
-import basket from "../Basket/Basket";
 
-// import basket from "../Basket/Basket";
+
 type PropsType = {
     getBasketItem: (id: string) => void
     // item: any
@@ -100,7 +98,7 @@ const Item = (props: PropsType) => {
                 </div>
                 {/*<Counter id={'2'}basket={basket[]}price={3}/>*/}
                 {
-                    isAdd ? <Link className={'btn'} to={'/catalogItem'}>Перейти к корзине</Link> :
+                    isAdd ? <Link className={'btn'} to={'/card'}>Перейти к корзине</Link> :
                         <button className={'btn'} onClick={onClickHandler}>
                             Добавить в карзину
                         </button>

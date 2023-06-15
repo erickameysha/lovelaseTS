@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Box, Button} from "@mui/material";
-import {Group, JsonInput, PasswordInput, TextInput} from "@mantine/core";
+import {Group, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../../state/store";
+import {PersonData} from "../../../state/auth-reducer";
+
+import {BasketType} from "../../../App";
 
 const CheckOutPersonForm = () => {
-
-
+const person = useSelector<AppRootStateType, PersonData[]>(state => state.auth['person'])
+const card = useSelector<AppRootStateType, BasketType[]>(state => state.auth['card'])
+const basket = useSelector<AppRootStateType, BasketType[]|null>(state => state.basket['basketItem'])
+const dispatch = useDispatch()
     const form = useForm({
         validate: {
             email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
@@ -14,9 +21,9 @@ const CheckOutPersonForm = () => {
         },
         initialValues: {
 
-                name: '',
-                email: '',
-                phone: '',
+                name: person.length? `${person[0].name}`: '',
+                email: person.length? `${person[0].email}`: '',
+                phone: person. length? `${person[0].phone}`:'',
                 social: '',
 
             country: 'Беларусь',
@@ -30,10 +37,13 @@ const CheckOutPersonForm = () => {
         },
     })
 
-
+useEffect(()=>{
+   console.log(card)
+    // dispatch(checkOut(basket))
+},[card])
     return (
         <Box>
-            <form onSubmit={form.onSubmit((values) => console.log(values))}>
+            <form onSubmit={form.onSubmit((values)=> console.log(values))}>
                 <div>
 
                     <TextInput
@@ -90,7 +100,7 @@ const CheckOutPersonForm = () => {
                         />
                     </div>
                     <Group position="right" mt="xl">
-                        <Button type="submit">Submit</Button>
+                        <Button type="submit" >Submit</Button>
                     </Group>
                 </div>
 

@@ -1,5 +1,6 @@
 import {catalogData, CatalogDataType} from "../Catalog/CatalogFakeData";
 import {getItemACType} from "./item-reducer";
+import uuid from "react-uuid";
 
 
 export type InitStateType = {
@@ -22,7 +23,7 @@ export const catalogReducer = (state = initState, action: ActionType): InitState
         }
         case "ADD-ITEM-CATALOG": {
             console.log(state)
-            return { ...state, items:[...state.items,{id: '42343234234',img: action.link,title: action.title,price: action.price,filter: action.searchValue} ]
+            return { ...state, items:[...state.items,{id: uuid(),img: action.link,title: action.title,price: action.price,filter: action.searchValue} ]
 
                 }
         }

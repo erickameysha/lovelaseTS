@@ -1,16 +1,22 @@
 import React from 'react';
-import Form from "../formes/Form";
+import './CheckOut.css'
 import CheckOutPersonForm from "./CheckOutPersonForm/CheckOutPersonForm";
+
 
 const CheckOut = () => {
     return (
-        <div style={{display:'flex'}}>
-            <div className="">Оформление заказа</div>
-            <div className="">
+        <div className={'container'} >
+            <div style={{
+                display: 'flex', padding: '70px 0',
+                justifyContent: 'space-around'
+            }}>
+                <div className="title">Оформление заказа</div>
                 <div className="">
-                    <CheckOutPersonForm/>
-                </div>
+                    <div className="">
+                        <CheckOutPersonForm/>
+                    </div>
 
+                </div>
             </div>
         </div>
     );
