@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: '', //сюда добавлять url
+    baseURL: 'https://localhost:5555/api/healthCheck', //сюда добавлять url
     withCredentials: true,
     headers: {
         // сюда добавляем аппи кей (если есть)
@@ -10,8 +10,9 @@ const instance = axios.create({
 })
 
 
-const api = {
+export const api = {
     testFetch() {
         return instance.get('/')
+
     }
 }

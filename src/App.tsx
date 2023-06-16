@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import './App.css';
 import Header from "./commponent/Header/Header";
@@ -14,8 +14,8 @@ import LoginPage from "./commponent/Registration/LoginPage";
 import Item from "./commponent/Item/Item";
 import {CatalogDataType} from "./Catalog/CatalogFakeData";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType} from "./state/store";
-import {getItemAC} from "./state/catalog-reducer";
+import {AppRootStateType, useAppDispatch, useAppSelector} from "./state/store";
+import {fetchTest, getItemAC} from "./state/catalog-reducer";
 import BasketContainer from "./commponent/Basket/BasketContainer";
 import CheckOut from "./commponent/СheckOut/CheckOut";
 
@@ -28,8 +28,9 @@ export interface BasketType extends CatalogDataType {
 
 function App() {
 
-    const catalog = useSelector<AppRootStateType, CatalogDataType[]>(state => state.catalog.items)
-    const dispatch = useDispatch()
+    const catalog = useAppSelector<CatalogDataType[]>(state => state.catalog.items)
+    const dispatch = useAppDispatch()
+
     const [basket, setBasket] = useState<BasketType[]>([
         // {id:'451',  img:'https://conteshop.by/ru/media/catalog/product/cache/11/image/639x852/9df78eab33525d08d6e5fb8d27136e95/b/b/bb8d7733d8727d5f947b31d0bd06aa56_1.jpg',title:  'Трусы стринги "Гуд карма"',  color: 'Цвет: Чёрно-белый',price: '12', filter:'Underwear', size:'m',},
     ])
@@ -49,7 +50,9 @@ function App() {
             setBasket([...basket, {...element, size, color, count: 0}])
         }
     }
-
+    useEffect(()=>{
+        dispatch(fetchTest())
+    },[])
 
     return (
         <div>

@@ -1,6 +1,8 @@
 import {catalogData, CatalogDataType} from "../Catalog/CatalogFakeData";
 import {getItemACType} from "./item-reducer";
 import uuid from "react-uuid";
+import {Dispatch} from "redux";
+import {api} from "../api";
 
 
 export type InitStateType = {
@@ -32,6 +34,13 @@ export const catalogReducer = (state = initState, action: ActionType): InitState
     }
 }
 
+export const fetchTest = () => {
+    return(dispatch:Dispatch<any>)=>{
+api.testFetch().then(()=> {
+    console.log('glprlpgrpr')})
+    }
+  
+}
 
 export const setCatalog = (catalog: CatalogDataType[]) => ({type: 'SET-CATALOG', catalog} as const)
 export const getItemAC = (newId: string) => ({type: 'GET-ITEM', newId} as const)
