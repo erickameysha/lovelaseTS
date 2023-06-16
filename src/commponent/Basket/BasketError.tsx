@@ -3,8 +3,9 @@ import './BasketError.css'
 import {Link} from "react-router-dom";
 const BasketError = () => {
     return (
+        <div className={'container'}>
         <div className={'card'}>
-            <div className={'container'}>
+
                 <div className="error-bg">
                     <svg width="251" height="312" viewBox="0 0 251 312" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -16,10 +17,11 @@ const BasketError = () => {
                     <h2 className="title title_left"><span>В корзине нет товаров.</span> Перейдите в каталог и добавьте
                         в
                         корзину любой товар, который вам понравится</h2>
+                    <Link className={'btn'} to={'/catalog'}>
+                      Вернутся в магазин
+                    </Link>
                 </div>
-                <Link to={'/catalog'}>
-                    назад
-                </Link>
+
             </div>
         </div>
     );

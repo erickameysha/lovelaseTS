@@ -100,7 +100,7 @@ const Item = (props: PropsType) => {
                 {
                     isAdd ? <Link className={'btn'} to={'/card'}>Перейти к корзине</Link> :
                         <button className={'btn'} onClick={onClickHandler}>
-                            Добавить в карзину
+                            Добавить в корзину
                         </button>
                 }
 

@@ -3,9 +3,11 @@ import './Catalog.css'
 import CatalogIMG from './CatalogImages/colection.png'
 import {CatalogItem} from "./CatalogsItem/CatalogItem";
 import {Link} from "react-router-dom";
-import { CatalogDataType} from "./CatalogFakeData";
+import {CatalogDataType} from "./CatalogFakeData";
 import {useDispatch} from "react-redux";
 import {getItemAC} from "../state/catalog-reducer";
+import CatalogItems from "./CatalogsItem/CatalogItems";
+import {Grid} from "@mantine/core";
 
 type PropsType = {
     catalog: CatalogDataType[]
@@ -54,27 +56,42 @@ const Catalog = (props: PropsType) => {
 
 
                     <div className="catalog-items">
-                        {
+                        <Grid>
+                            {
 
-                            dataType.map((el: any) => {
-                                return (
-                                    <Link key={el.id} id="RouterNavLink" className={'catalog-link'} onClick={() => {
-                                        props.getBasketItem(el.id)
-                                    }} to={`/item/${el.id}`}>
-                                        <CatalogItem
-                                            key={el.id}
-                                            img={el.img}
-                                            id={el.id}
-                                            title={el.title}
-                                            color={el.color}
-                                            price={el.price}
-                                            filter={el.filter}
-                                            hookCatalogItem={hookCatalogItem}
-                                        />
-                                    </Link>
-                                )
-                            })
-                        }
+                                dataType.map((el: any) => {
+                                    return (
+                                        <Grid.Col span={4}>
+                                            <Link key={el.id} id="RouterNavLink" className={'catalog-link'}
+                                                  onClick={() => {
+                                                      props.getBasketItem(el.id)
+                                                  }} to={`/item/${el.id}`}>
+                                                {/*<CatalogItem*/}
+                                                {/*    key={el.id}*/}
+                                                {/*    img={el.img}*/}
+                                                {/*    id={el.id}*/}
+                                                {/*    title={el.title}*/}
+                                                {/*    color={el.color}*/}
+                                                {/*    price={el.price}*/}
+                                                {/*    filter={el.filter}*/}
+                                                {/*    hookCatalogItem={hookCatalogItem}*/}
+                                                {/*/>*/}
+                                                <CatalogItems
+                                                    key={el.id}
+                                                    img={el.img}
+                                                    id={el.id}
+                                                    title={el.title}
+                                                    color={el.color}
+                                                    price={el.price}
+                                                    filter={el.filter}
+                                                    hookCatalogItem={hookCatalogItem}
+                                                />
+                                            </Link>
+                                        </Grid.Col>
+                                    )
+                                })
+                            }
+                        </Grid>
                     </div>
 
 

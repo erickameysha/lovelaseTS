@@ -14,3 +14,19 @@
     margin-bottom: 278px;
     width: 645px;
 }
+.btn{
+    text-decoration: none;
+    margin-top: 35px;
+    display: inline-block;
+    text-align: center;
+    padding: 24px 48px;
+    font-size: 24px;
+    transition: .5s all;
+    line-height: 100%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background-color: #e44897;
+    letter-spacing: .02em;
+
+}

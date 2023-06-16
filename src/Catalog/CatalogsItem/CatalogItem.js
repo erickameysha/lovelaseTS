@@ -19,7 +19,7 @@ export const CatalogItem = (props) => {
     return (
       <Card className='Card-item' sx={{ maxWidth: 440 }}>
         <div className={'item'}>
-          <Link >
+      
             <CardMedia
             component="img"
             height="194"
@@ -28,7 +28,7 @@ export const CatalogItem = (props) => {
             
             />
 
-          </Link>
+
             {/* <div className={'catalog-subtitle'}>
                 <span className={'catalog-subtitle__title'}>{props.title}</span>
                 <span className={'catalog-subtitle__color'}>{props.color}</span>
