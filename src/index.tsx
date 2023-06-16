@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "./state/store";
-import Test from "./Test";
+
 import BasketError from "./commponent/Basket/BasketError";
 import CheckOut from "./commponent/СheckOut/CheckOut";
 
