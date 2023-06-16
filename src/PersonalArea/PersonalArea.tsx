@@ -7,6 +7,7 @@ import {AppRootStateType} from "../state/store";
 
 import { PersonData} from "../state/auth-reducer";
 import RegistrationPage from "../commponent/Registration/RegistrationPage";
+import MyAccountContainer from "./MyAccount/MyAccountContainer";
 
 const PersonalArea = () => {
     const auth = useSelector<AppRootStateType, PersonData[]|null>(state => state.auth['person'])
@@ -16,20 +17,12 @@ const PersonalArea = () => {
     return (
         <div style={{
            'maxWidth': '1120px',
-            'margin': '0 auto'
+            'margin': '0 auto',
+            padding: '30px 0'
         }}>
         {auth?.length === 0? <RegistrationPage/>:
-            <div className={'container'}>
-            <div style={{background:'pink', padding:'10px'}}>
-                Данная информация поможет вам быстрее совершать покупки и просматривать историю заказов. Вы сможете изменить информацию при необходимости в личном кабинете.
-            </div>
-                <div style={{borderBottom: '2px solid pink'}} className="">
-                <MyAccount/>
-            </div>
-            <div>
-                <HistoryBy/>
-            </div>
-        </div>}
+          <MyAccountContainer/>
+        }
 
         </div>
 

@@ -53,33 +53,36 @@ function App() {
 
     return (
         <div>
-            <Header/>
-            <Routes>
-                <Route path={'/aboutUS'} element={<BrandHistory/>}/>
-                <Route path={'/admin'} element={<AdminPanel/>}/>
-                <Route path={'/my-account'} element={<PersonalArea/>}/>
-                <Route path={'/'} element={<Main/>}/>
+           <Header/>
 
-                <Route path={'/catalog'} element={<Catalog
-                    catalog={catalog}
-                    getBasketItem={getItem}
-                />}/>
-                <Route path={'/registration'} element={<RegistrationPage/>}/>
-                <Route path={'/login'} element={<LoginPage/>}/>
-                <Route path={'/card'} element={<BasketContainer/>}/>
-                <Route path={'/check-out'} element={<CheckOut/>}/>
-                <Route path={'/item/:cardID'} element={<Item
-                    // item={item}
-                    getBasketItem={getItem}
-                    getBasket={getBasket}
-                />}
+                <Routes>
+                    <Route path={'/aboutUS'} element={<BrandHistory/>}/>
+                    <Route path={'/admin'} element={<AdminPanel/>}/>
+                    <Route path={'/my-account'} element={<PersonalArea/>}/>
+                    <Route path={'/'} element={<Main/>}/>
 
-                />
-            </Routes>
-            {/*<AdminPanel/>*/}
-            {/*<Main/>*/}
-            {/*<BrandHistory/>*/}
-            <Footer/>
+                    <Route path={'/catalog'} element={<Catalog
+                        catalog={catalog}
+                        getBasketItem={getItem}
+                    />}/>
+                    <Route path={'/registration'} element={<RegistrationPage/>}/>
+                    <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route path={'/card'} element={<BasketContainer/>}/>
+                    <Route path={'/check-out'} element={<CheckOut/>}/>
+                    <Route path={'/item/:cardID'} element={<Item
+                        // item={item}
+                        getBasketItem={getItem}
+                        getBasket={getBasket}
+                    />}
+
+                    />
+                </Routes>
+
+
+
+    {/*<Footer/>*/}
+
+
         </div>
     );
 }

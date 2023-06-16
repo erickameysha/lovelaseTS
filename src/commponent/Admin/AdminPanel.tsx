@@ -1,64 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import {Select, TextInput} from "@mantine/core";
+import {Accordion, Select, Tabs, TextInput} from "@mantine/core";
 import {useDispatch} from "react-redux";
 import {addItem} from "../../state/catalog-reducer";
+import AddItemPanel from "../AddItemPanel";
+import Orders from "../СheckOut/Orders";
 
 const AdminPanel = () => {
-    const dispatch = useDispatch()
-    const [searchValue, onSearchChange] = useState("All");
-    const [link, setLink] = useState('')
-    const [title, setTitle] = useState('')
-    const [price, setPrice] = useState<number>(0)
-
-    useEffect(()=> {
-        console.log(searchValue)
-        console.log(link)
-    },[searchValue, link])
-
-    const onClickHandler = () => {
-      dispatch(addItem(searchValue, link,price, title))
-    }
 
     return (
         <div>
-            <h1>Админ панель
+            <Accordion style={{margin:'150px 0'}} defaultValue="customization">
+                <Accordion.Item value="customization">
+                    <Accordion.Control>добавление товара</Accordion.Control>
+                    <Accordion.Panel><AddItemPanel/></Accordion.Panel>
+                </Accordion.Item>
 
+                <Accordion.Item value="flexibility">
+                    <Accordion.Control>заказы</Accordion.Control>
+                    <Accordion.Panel><Orders/></Accordion.Panel>
+                </Accordion.Item>
 
-            </h1>
-
-            <div>
-                <h1>Добавление товара</h1>
-
-                <div>
-
-                    <Select
-                        label="Your favorite framework/library"
-                        placeholder="Pick one"
-                        searchable
-                        onSearchChange={onSearchChange}
-                        searchValue={searchValue}
-                        nothingFound="No options"
-                        data={['Underwear', 'BodyJewelry', 'clothing', 'Swimwear']}
-                    />
-                    <TextInput
-                        placeholder={'Ccылка на фотографию формата jpg, webp'}
-                        onChange={(event) => setLink(event.currentTarget.value)}
-
-                    />
-                    <TextInput
-                        placeholder={'Цвет'}
-                        onChange={(event) => setTitle(event.currentTarget.value)}
-
-                    />
-                    <TextInput
-                        placeholder={'Цена'}
-                        onChange={(event) => setPrice(+event.currentTarget.value)}
-
-                    />
-                </div>
-                <button onClick={onClickHandler}> +</button>
-            </div>
-
+            </Accordion>
         </div>
     );
 };

@@ -41,11 +41,11 @@ export type AuthType = {
 
 const initState: AuthType = {
     person:[
-        // {id:'3', name: '3',
-        // lastName:'lsls',
-        // email: 'fkkfkf@gmss',
-        // password: 'kddk',
-        // phone: '+4394932', isAuth: true, isAdmin: false,country:'',street: '', korp: '', house:'', flat:'', comment:'',city:''}
+        {id:'3', name: 'Эрик',
+        lastName:'lsls',
+        email: 'fkkfkf@gmаil.com',
+        password: 'kddk',
+        phone: '+375447597854', isAuth: true, isAdmin: false,country:'',street: '', korp: '', house:'', flat:'', comment:'',city:''}
     ],
 
     card: []
@@ -62,10 +62,8 @@ export const authReducer = (state = initState, action: ActionType) => {
                     password: action.password,
                     phone: action.phone, isAuth: true, isAdmin: false,country:'',street: '', korp: '', house:'', flat:'', comment:'',city:''}] ?? null}
         }
-        case "CHECK-OUT":{
-            console.log(state.card)
-            return {...state,card: action.basket.map(el=>({...el}))}
-        }
+
+
 
 
         default:
@@ -82,8 +80,5 @@ export const logInAC = (email: string,
     type: 'LOG', email, password
 } as const)
 
-export const checkOut = (basket: BasketType[]) =>( {
-  type: 'CHECK-OUT', basket,
-}as const)
 
-type ActionType = ReturnType<typeof regAC> | ReturnType<typeof logInAC> |ReturnType<typeof checkOut>
+type ActionType = ReturnType<typeof regAC> | ReturnType<typeof logInAC>
