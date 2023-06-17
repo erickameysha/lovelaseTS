@@ -10,7 +10,7 @@ import RegistrationPage from "../commponent/Registration/RegistrationPage";
 import MyAccountContainer from "./MyAccount/MyAccountContainer";
 
 const PersonalArea = () => {
-    const auth = useSelector<AppRootStateType, PersonData[]|null>(state => state.auth['person'])
+    const auth = useSelector<AppRootStateType, boolean>(state => state.auth['logIn'])
 
 
 
@@ -20,8 +20,8 @@ const PersonalArea = () => {
             'margin': '0 auto',
             padding: '30px 0'
         }}>
-        {auth?.length === 0? <RegistrationPage/>:
-          <MyAccountContainer/>
+        {auth ? <MyAccountContainer/>: <RegistrationPage/>
+
         }
 
         </div>

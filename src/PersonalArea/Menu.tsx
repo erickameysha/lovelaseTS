@@ -1,13 +1,16 @@
 import React from 'react';
 import { Menu, Button, Text } from '@mantine/core';
 
+type propsType ={
+    id: any
+}
+const Meneu = (props:  any) => {
 
-const Meneu = () => {
     return (
 
         <Menu shadow="md" width={200}>
             <Menu.Target>
-                <Button>Toggle menu</Button>
+                <Button>x</Button>
             </Menu.Target>
 
             <Menu.Dropdown>

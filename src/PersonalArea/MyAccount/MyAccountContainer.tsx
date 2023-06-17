@@ -3,6 +3,7 @@ import React from 'react';
 import MyAccount from "./MyAccount";
 import {ClockHour3, User} from "tabler-icons-react";
 import HistoryBy from "../historyBy/HistoryBy";
+import {Link} from "react-router-dom";
 
 
 const useStyle = createStyles((theme)=>({
@@ -28,6 +29,7 @@ const useStyle = createStyles((theme)=>({
 const MyAccountContainer = () => {
     const {classes} = useStyle()
     return (
+        <div>
         <Tabs  className={classes.root} defaultValue="gallery" orientation="vertical">
             <Tabs.List className={classes.tabsList} >
                 <Tabs.Tab className={classes.tab} icon={<User
@@ -47,6 +49,10 @@ const MyAccountContainer = () => {
             <Tabs.Panel value="messages"><HistoryBy/></Tabs.Panel>
 
         </Tabs>
+            <Link to={'/admin'}>админ панель</Link>
+            {/*<butoon to={'/admin'}>админ панель</butoon>*/}
+
+        </div>
     );
 };
 

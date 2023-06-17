@@ -4,11 +4,13 @@ import {useDispatch} from "react-redux";
 import {addItem} from "../../state/catalog-reducer";
 import AddItemPanel from "../AddItemPanel";
 import Orders from "../СheckOut/Orders";
+import {Link} from "react-router-dom";
 
 const AdminPanel = () => {
 
     return (
-        <div>
+        <div style={{maxWidth: '1120px',
+            margin: '0 auto'}}>
             <Accordion style={{margin:'150px 0'}} defaultValue="customization">
                 <Accordion.Item value="customization">
                     <Accordion.Control>добавление товара</Accordion.Control>
@@ -21,6 +23,9 @@ const AdminPanel = () => {
                 </Accordion.Item>
 
             </Accordion>
+            <div>
+            <Link to={'/my-account'}>личныйй</Link>
+            </div>
         </div>
     );
 };

@@ -51,7 +51,7 @@ function App() {
         }
     }
     useEffect(()=>{
-        dispatch(fetchTest())
+        dispatch(fetchTest()) 
     },[])
 
     return (

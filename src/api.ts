@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://localhost:5555/api/healthCheck', //сюда добавлять url
+    baseURL: 'https://jsonplaceholder.typicode.com/todos/1', //сюда добавлять url
     withCredentials: true,
     headers: {
         // сюда добавляем аппи кей (если есть)
@@ -12,7 +12,7 @@ const instance = axios.create({
 
 export const api = {
     testFetch() {
-        return instance.get('/')
+        return instance.get('')
 
     }
 }

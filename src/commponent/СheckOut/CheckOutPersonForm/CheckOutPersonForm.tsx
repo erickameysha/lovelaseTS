@@ -4,7 +4,7 @@ import {Group, TextInput} from "@mantine/core";
 import {useForm} from "@mantine/form";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../state/store";
-import {PersonData} from "../../../state/auth-reducer";
+import {getToBasket, PersonData} from "../../../state/auth-reducer";
 
 import {BasketType} from "../../../App";
 
@@ -12,6 +12,7 @@ const CheckOutPersonForm = () => {
 const person = useSelector<AppRootStateType, PersonData[]>(state => state.auth['person'])
 const card = useSelector<AppRootStateType, BasketType[]>(state => state.auth['card'])
 const basket = useSelector<AppRootStateType, BasketType[]|null>(state => state.basket['basketItem'])
+const total = useSelector<AppRootStateType, number>(state => state.basket['totalPrice'])
 const dispatch = useDispatch()
     const form = useForm({
         validate: {
@@ -36,14 +37,15 @@ const dispatch = useDispatch()
 
         },
     })
-
+const onClick = () => {
+    dispatch(getToBasket(basket, total))
+}
 useEffect(()=>{
-   console.log(card)
-    // dispatch(checkOut(basket))
+    console.log(card)
 },[card])
     return (
         <Box>
-            <form onSubmit={form.onSubmit((values)=> console.log(values))}>
+            <form onSubmit={form.onSubmit(onClick)}>
                 <div>
 
                     <TextInput

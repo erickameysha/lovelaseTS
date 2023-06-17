@@ -8,10 +8,12 @@ import {api} from "../api";
 export type InitStateType = {
     items: CatalogDataType[]
     currentItem:CatalogDataType| null
+    test: any
 }
 const initState:InitStateType = {
     items: catalogData,
-    currentItem:null
+    currentItem:null,
+    test:[]
 }
 
 export const catalogReducer = (state = initState, action: ActionType): InitStateType => {
@@ -29,20 +31,22 @@ export const catalogReducer = (state = initState, action: ActionType): InitState
 
                 }
         }
+
         default:
             return state
     }
 }
 
 export const fetchTest = () => {
-    return(dispatch:Dispatch<any>)=>{
-api.testFetch().then(()=> {
-    console.log('glprlpgrpr')})
-    }
-  
-}
+    return (dispatch: Dispatch<any>) => {
+        api.testFetch().then((res) => {
+            console.log(res)
+        })
 
+    }
+}
 export const setCatalog = (catalog: CatalogDataType[]) => ({type: 'SET-CATALOG', catalog} as const)
+export const testFetchAC = (data: any) => ({type: 'test', data} as const)
 export const getItemAC = (newId: string) => ({type: 'GET-ITEM', newId} as const)
 export const addItem = (searchValue: string, link: string, price: number, title: string) =>
     ({type: 'ADD-ITEM-CATALOG', searchValue, link, price, title} as const)
@@ -52,3 +56,4 @@ export type ActionType =
     ReturnType<typeof setCatalog>
     | getItemACType
     | ReturnType<typeof addItem>
+    | ReturnType<typeof testFetchAC>
