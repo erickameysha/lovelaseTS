@@ -31,7 +31,9 @@ export const catalogReducer = (state = initState, action: ActionType): InitState
 
                 }
         }
-
+        case "DEL-ITEM":{
+            return {...state, items: state.items.filter(el => el.id !== action.newId)}
+        }
         default:
             return state
     }
@@ -48,6 +50,7 @@ export const fetchTest = () => {
 export const setCatalog = (catalog: CatalogDataType[]) => ({type: 'SET-CATALOG', catalog} as const)
 export const testFetchAC = (data: any) => ({type: 'test', data} as const)
 export const getItemAC = (newId: string) => ({type: 'GET-ITEM', newId} as const)
+export const delItemAC = (newId: string) => ({type: 'DEL-ITEM', newId} as const)
 export const addItem = (searchValue: string, link: string, price: number, title: string) =>
     ({type: 'ADD-ITEM-CATALOG', searchValue, link, price, title} as const)
 
@@ -57,3 +60,4 @@ export type ActionType =
     | getItemACType
     | ReturnType<typeof addItem>
     | ReturnType<typeof testFetchAC>
+    | ReturnType<typeof delItemAC>

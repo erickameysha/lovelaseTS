@@ -1,7 +1,5 @@
 import {BasketType} from "../App";
 import uuid from "react-uuid";
-import {log} from "util";
-
 
 
 export type PersonData = {
@@ -24,14 +22,14 @@ export type PersonData = {
     comment: string
 
 }
-interface Form extends PersonData {
-    city: string,
-    street:string,
-    house:string,
-    korp: string,
-    flat: string,
-    comment: string
-}
+// interface Form extends PersonData {
+//     city: string,
+//     street:string,
+//     house:string,
+//     korp: string,
+//     flat: string,
+//     comment: string
+// }
 export type OrderType ={
     id: string,
     totalPrice: string,
@@ -81,10 +79,10 @@ debugger
             return {...state, card: state.card.filter(el=> el.id !==action.id)}
         }
         case "LOG":{
-            debugger
+
             let account ={...state, person:state.person.find(el=> action.email === el.email || action.password || el.password)}
             if (account){
-                debugger
+
                 return {...state, logIn:true}
             }else {
                 return console.log(state)

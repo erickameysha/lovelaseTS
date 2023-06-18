@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import {Accordion, Select, Tabs, TextInput} from "@mantine/core";
-import {useDispatch} from "react-redux";
-import {addItem} from "../../state/catalog-reducer";
+import React from 'react';
+import {Accordion} from "@mantine/core";
 import AddItemPanel from "../AddItemPanel";
 import Orders from "../СheckOut/Orders";
 import {Link} from "react-router-dom";
+import CardsContainer from "./CardsContainer";
 
 const AdminPanel = () => {
 
@@ -21,11 +20,16 @@ const AdminPanel = () => {
                     <Accordion.Control>заказы</Accordion.Control>
                     <Accordion.Panel><Orders/></Accordion.Panel>
                 </Accordion.Item>
+               <Accordion.Item value="Cards">
+                    <Accordion.Control>Редактировать Товары</Accordion.Control>
+                    <Accordion.Panel><CardsContainer/></Accordion.Panel>
+                </Accordion.Item>
 
             </Accordion>
             <div>
             <Link to={'/my-account'}>личныйй</Link>
             </div>
+
         </div>
     );
 };
